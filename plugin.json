@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "home-assistant-developer",
+  "version": "1.0.0",
+  "description": "Develop Home Assistant custom integrations and Lovelace cards using current developer documentation.",
+  "author": {
+    "name": "Denys Dovhan",
+    "url": "https://github.com/denysdovhan"
+  },
+  "repository": "https://github.com/denysdovhan/home-assistant-developer",
+  "license": "MIT"
+}

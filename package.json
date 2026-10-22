@@ -1,0 +1,13 @@
+{
+  "name": "home-assistant-developer",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
+    "validate": "./scripts/validate-skills.sh && ./scripts/validate-plugin.sh"
+  },
+  "devDependencies": {
+    "oxfmt": "0.58.0"
+  }
+}
