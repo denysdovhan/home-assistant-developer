@@ -2,9 +2,12 @@ import assert from "node:assert/strict";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 
 const read = (path) => JSON.parse(readFileSync(path, "utf8"));
+
 // Keep shared plugin metadata identical while allowing host-specific branding.
 const { $schema, extensions, ...manifest } = read("plugin.json");
-const { displayName, icon, ...claudeManifest } = read(".claude-plugin/plugin.json");
+const { displayName, icon, documentationUrl, supportUrl, ...claudeManifest } = read(
+  ".claude-plugin/plugin.json",
+);
 assert.deepEqual(claudeManifest, manifest);
 
 // Both hosts use the same bundled logo and display name.
@@ -19,6 +22,11 @@ assert.ok(
 );
 assert.match(branding.brandColor, /^#[0-9A-Fa-f]{6}$/);
 assert.match(branding.brandColorDark, /^#[0-9A-Fa-f]{6}$/);
+
+// Host-specific listing links point to the same documentation and support pages.
+assert.equal(branding.websiteURL, manifest.homepage);
+assert.equal(documentationUrl, manifest.homepage);
+assert.equal(supportUrl, branding.supportURL);
 
 // Each marketplace exposes this repository as one plugin.
 const claude = read(".claude-plugin/marketplace.json");

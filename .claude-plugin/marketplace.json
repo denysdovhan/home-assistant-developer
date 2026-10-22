@@ -2,7 +2,8 @@
   "name": "home-assistant-developer",
   "owner": {
     "name": "Denys Dovhan",
-    "url": "https://github.com/denysdovhan"
+    "url": "https://github.com/denysdovhan",
+    "email": "denysdovhan@gmail.com"
   },
   "plugins": [
     {

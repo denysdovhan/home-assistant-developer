@@ -4,10 +4,24 @@
   "description": "Develop Home Assistant custom integrations and Lovelace cards using current developer documentation.",
   "author": {
     "name": "Denys Dovhan",
-    "url": "https://github.com/denysdovhan"
+    "url": "https://github.com/denysdovhan",
+    "email": "denysdovhan@gmail.com"
   },
   "repository": "https://github.com/denysdovhan/home-assistant-developer",
   "license": "MIT",
   "displayName": "Home Assistant Developer",
-  "icon": "./assets/home-assistant.png"
+  "icon": "./assets/home-assistant.png",
+  "homepage": "https://github.com/denysdovhan/home-assistant-developer#readme",
+  "keywords": [
+    "home-assistant",
+    "hacs",
+    "lovelace",
+    "custom-integrations",
+    "custom-cards",
+    "python",
+    "web-components",
+    "agent-skills"
+  ],
+  "documentationUrl": "https://github.com/denysdovhan/home-assistant-developer#readme",
+  "supportUrl": "https://github.com/denysdovhan/home-assistant-developer/issues"
 }
