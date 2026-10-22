@@ -32,6 +32,20 @@ claude plugin install home-assistant-developer@home-assistant-developer
 
 For local testing, replace the GitHub shorthand in either marketplace command with this repository's absolute path.
 
+## Plugin appearance
+
+Edit `extensions.com.openai.interface` in `plugin.json` to customize Codex's
+`displayName`, `logo`, `composerIcon`, `brandColor`, and `brandColorDark`.
+Image paths are relative to the plugin root; the bundled logo is
+`assets/home-assistant.png`. Both colors currently use Home Assistant blue (`#18BCF2`).
+See [OpenAI listing metadata](https://developers.openai.com/plugins/deploy/submission#listing-metadata).
+
+Claude's `.claude-plugin/plugin.json` declares `displayName` and `icon`.
+The icon is used for Anthropic directory listings; Claude Code ignores it at
+runtime and has no documented plugin brand-color field. Merely installing from
+this repository does not guarantee a graphical icon in Claude's install UI.
+See [Claude directory listing fields](https://code.claude.com/docs/en/plugins-reference#directory-listing-fields).
+
 ## Development
 
 Requires Node.js 24+, uv, pre-commit, and Claude Code.

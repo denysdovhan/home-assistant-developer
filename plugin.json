@@ -1,12 +1,27 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "home-assistant-developer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Develop Home Assistant custom integrations and Lovelace cards using current developer documentation.",
   "author": {
     "name": "Denys Dovhan",
     "url": "https://github.com/denysdovhan"
   },
   "repository": "https://github.com/denysdovhan/home-assistant-developer",
-  "license": "MIT"
+  "license": "MIT",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Home Assistant Developer",
+        "shortDescription": "Build integrations and cards",
+        "longDescription": "Develop Home Assistant custom integrations and Lovelace cards using current developer documentation.",
+        "developerName": "Denys Dovhan",
+        "category": "Developer Tools",
+        "brandColor": "#18BCF2",
+        "brandColorDark": "#18BCF2",
+        "composerIcon": "./assets/home-assistant.png",
+        "logo": "./assets/home-assistant.png"
+      }
+    }
+  }
 }

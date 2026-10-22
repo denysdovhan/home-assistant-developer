@@ -1,11 +1,13 @@
 {
   "name": "home-assistant-developer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Develop Home Assistant custom integrations and Lovelace cards using current developer documentation.",
   "author": {
     "name": "Denys Dovhan",
     "url": "https://github.com/denysdovhan"
   },
   "repository": "https://github.com/denysdovhan/home-assistant-developer",
-  "license": "MIT"
+  "license": "MIT",
+  "displayName": "Home Assistant Developer",
+  "icon": "./assets/home-assistant.png"
 }
