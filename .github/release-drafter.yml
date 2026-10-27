@@ -1,0 +1,84 @@
+name-template: "v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+
+exclude-contributors:
+  - github-actions[bot]
+  - github-actions
+  - dependabot[bot]
+  - dependabot
+
+categories:
+  - title: "❗️ Breaking Changes"
+    when:
+      - conventional:
+          breaking: true
+      - labels: [breaking]
+
+  - title: "✨ Skill Improvements"
+    when:
+      - conventional:
+          type: feat
+          breaking: false
+      - labels: [feature, enhancement]
+
+  - title: "🐛 Fixes"
+    when:
+      - conventional:
+          type: fix
+          breaking: false
+      - labels: [fix, bug]
+
+  - title: "📝 Documentation"
+    when:
+      - conventional:
+          type: docs
+          breaking: false
+      - labels: [documentation]
+
+  - title: "🧰 Maintenance"
+    when:
+      - conventional:
+          types: [build, chore, ci, refactor, revert, style]
+          breaking: false
+      - labels: [chore, dependencies, maintenance]
+
+  - type: pre-exclude
+    when:
+      label: skip-changelog
+
+  - type: version-resolver
+    semver-increment: major
+    when:
+      - conventional:
+          breaking: true
+      - labels: [major, breaking]
+
+  - type: version-resolver
+    semver-increment: minor
+    when:
+      - conventional:
+          type: feat
+          breaking: false
+      - labels: [minor, feature, enhancement]
+
+  - type: version-resolver
+    semver-increment: patch
+
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+change-title-escapes: '\<*_&'
+
+template: |
+  ## What's Changed
+
+  $CHANGES
+
+  ## ⭐️ Contributors
+
+  $CONTRIBUTORS
+
+  ## Sponsorship
+
+  If you find these skills useful, please consider supporting their maintenance:
+
+  - 💖 [Sponsor on GitHub](https://github.com/sponsors/denysdovhan)
+  - ☕️ [Buy Me A Coffee](https://buymeacoffee.com/denysdovhan)

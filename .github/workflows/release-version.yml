@@ -1,0 +1,44 @@
+name: Update release version
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ github.event.release.tag_name }}
+
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7.1.0
+        with:
+          node-version: "24"
+
+      - name: Update metadata to the published version
+        run: node scripts/set-version.mjs "$RELEASE_TAG"
+
+      - name: Check metadata consistency
+        run: |
+          node scripts/validate-marketplace.mjs
+          git diff --check
+
+      - name: Commit and push version changes
+        uses: stefanzweifel/git-auto-commit-action@v7.2.1
+        with:
+          branch: main
+          commit_message: "chore: update version to ${{ env.RELEASE_TAG }}"
+          file_pattern: plugin.json .claude-plugin/plugin.json package.json package-lock.json

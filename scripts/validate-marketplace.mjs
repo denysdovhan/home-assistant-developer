@@ -10,6 +10,13 @@ const { displayName, icon, documentationUrl, supportUrl, ...claudeManifest } = r
 );
 assert.deepEqual(claudeManifest, manifest);
 
+// All installable manifests and npm metadata must advertise one version.
+const packageMetadata = read("package.json");
+const lock = read("package-lock.json");
+assert.equal(packageMetadata.version, manifest.version);
+assert.equal(lock.version, manifest.version);
+assert.equal(lock.packages[""].version, manifest.version);
+
 // Both hosts use the same bundled logo and display name.
 const branding = extensions["com.openai"].interface;
 assert.equal(displayName, branding.displayName);

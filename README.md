@@ -64,6 +64,16 @@ The root `plugin.json` uses [Agent Plugins 1.0](https://agent-plugins.org/) as r
 
 These skills were extracted from [denysdovhan/agents](https://github.com/denysdovhan/agents). Keep instructions, references, icons, and OpenAI skill metadata together when moving a skill.
 
+## Releases
+
+1. Merge pull requests into `main`. **Release Drafter** groups notes into skill improvements, fixes, documentation, and maintenance using PR titles and labels. `feat:` or `feature`/`enhancement`/`minor` means a minor bump; a breaking conventional title or `major`/`breaking` means a major bump. Documentation and other changes default to a patch; `skip-changelog` excludes a PR.
+2. Review the draft in GitHub Releases and choose a stable tag such as `v1.0.2`. For the first release, use a version at least as high as `plugin.json`. Add notes manually for direct commits, which Release Drafter does not include.
+3. Click **Publish release**. **Update release version** uses `git-auto-commit-action` to commit that tag's version to the four JSON metadata files on `main`.
+
+The version update covers `plugin.json`, `.claude-plugin/plugin.json`, `package.json`, and both root version fields in `package-lock.json`. It rejects malformed versions and downgrades, and makes no commit if the files already match. Only stable versions (`X.Y.Z`, optionally prefixed with `v`) are supported.
+
+The metadata commit comes after publication. The release tag and source archives remain unchanged and therefore contain the previous metadata version. The workflow uses `GITHUB_TOKEN`, so `main` must allow bot pushes; its metadata consistency checks run before committing because that push does not trigger other workflows. If the update fails, fix the cause and rerun **Update release version** from Actions.
+
 ## License
 
 [MIT](LICENSE) © Denys Dovhan
