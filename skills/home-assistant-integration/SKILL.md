@@ -1,11 +1,11 @@
 ---
 name: home-assistant-integration
-description: Use this skill when creating, scaffolding, reviewing, or maintaining Python Home Assistant custom integrations, including work on custom_components, manifests, config flows, options flows, config entries, platforms/entities, DataUpdateCoordinator, integration automation triggers, diagnostics, repairs, discovery/networking, authentication, HACS-ready repositories, or Home Assistant integration quality scale compliance.
+description: Use this skill when creating, scaffolding, reviewing, or maintaining Python Home Assistant custom integrations, or researching how core integrations implement common behavior and which patterns to reuse. Covers custom_components, manifests, config flows, options flows, config entries, platforms/entities, DataUpdateCoordinator, integration automation triggers, diagnostics, repairs, discovery/networking, authentication, HACS-ready repositories, and Home Assistant integration quality scale compliance.
 ---
 
 # Home Assistant Integration Skill
 
-Use this skill for Home Assistant custom integration development. This is separate from Home Assistant automation, helper, script, and Lovelace work.
+Use this skill for Home Assistant custom integration development and research into reusable core integration patterns. This is separate from Home Assistant automation, helper, script, and Lovelace work.
 
 ## Start With Current Docs
 
@@ -22,10 +22,17 @@ The reference files in this skill are the routing indexes to the doc paths; do n
 | Reference                                                                      | Use when                                                                                                                                                                          |
 | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`references/architecture.md`](references/architecture.md)                     | Editing generic integration architecture, lifecycle, setup, manifest, config entries, data fetching, events, diagnostics, auth, networking, docs, tests, or translations          |
+| [`references/core-patterns.md`](references/core-patterns.md)                   | Investigating how core integrations implement a behavior, comparing common patterns, or choosing an existing helper or implementation to reuse                                    |
 | [`references/core-integration-files.md`](references/core-integration-files.md) | Editing core integration files such as `__init__.py`, `manifest.json`, `config_flow.py`, `coordinator.py`, `diagnostics.py`, `repairs.py`, services, translations, tests, or docs |
 | [`references/entities-and-domains.md`](references/entities-and-domains.md)     | Editing platform/entity files such as `sensor.py`, `binary_sensor.py`, `calendar.py`, `weather.py`, or deciding which platform domain fits a feature                              |
 | [`references/automation-triggers.md`](references/automation-triggers.md)       | Adding or maintaining new integration-provided automation triggers in `trigger.py` and `triggers.yaml`                                                                            |
 | [`references/quality-rules.md`](references/quality-rules.md)                   | Checking Bronze/Silver/Gold/Platinum quality scale rules or reviewing an integration against Home Assistant quality requirements                                                  |
+
+## Research Core Patterns
+
+Before designing non-trivial integration behavior, or when asked how core handles it, use `references/core-patterns.md` to search current core implementations and their tests. Compare relevant integrations, check the underlying helpers and current docs, and recommend the smallest compatible pattern with source links. Skip this research for trivial edits or when the relevant pattern has already been verified for the task.
+
+For research-only requests, return findings and a reuse recommendation without editing the target integration or running the implementation review checklist.
 
 ## Local Workflow
 

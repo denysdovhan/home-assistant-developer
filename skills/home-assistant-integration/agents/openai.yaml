@@ -4,4 +4,4 @@ interface:
   icon_small: "./assets/home-assistant.svg"
   icon_large: "./assets/home-assistant.svg"
   brand_color: "#18BCF2"
-  default_prompt: "Use $home-assistant-integration to create, review, or maintain a Home Assistant custom integration."
+  default_prompt: "Use $home-assistant-integration to create, review, or maintain a Home Assistant custom integration, or research reusable patterns in core integrations."
