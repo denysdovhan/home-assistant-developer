@@ -20,8 +20,8 @@
         "category": "Developer Tools",
         "brandColor": "#18BCF2",
         "brandColorDark": "#18BCF2",
-        "composerIcon": "./assets/home-assistant.png",
-        "logo": "./assets/home-assistant.png",
+        "composerIcon": "./assets/home-assistant.svg",
+        "logo": "./assets/home-assistant.svg",
         "capabilities": [
           "Custom integration development",
           "Lovelace card development",

@@ -10,7 +10,7 @@
   "repository": "https://github.com/denysdovhan/home-assistant-developer",
   "license": "MIT",
   "displayName": "Home Assistant Developer",
-  "icon": "./assets/home-assistant.png",
+  "icon": "./assets/home-assistant.svg",
   "homepage": "https://github.com/denysdovhan/home-assistant-developer#readme",
   "keywords": [
     "home-assistant",

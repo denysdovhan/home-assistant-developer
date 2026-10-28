@@ -37,7 +37,7 @@ For local testing, replace the GitHub shorthand in either marketplace command wi
 Edit `extensions.com.openai.interface` in `plugin.json` to customize Codex's
 `displayName`, `logo`, `composerIcon`, `brandColor`, and `brandColorDark`.
 Image paths are relative to the plugin root; the bundled logo is
-`assets/home-assistant.png`. Both colors currently use Home Assistant blue (`#18BCF2`).
+`assets/home-assistant.svg`. Both colors currently use Home Assistant blue (`#18BCF2`).
 See [OpenAI listing metadata](https://developers.openai.com/plugins/deploy/submission#listing-metadata).
 
 Claude's `.claude-plugin/plugin.json` declares `displayName` and `icon`.
@@ -77,3 +77,5 @@ The metadata commit comes after publication. The release tag and source archives
 ## License
 
 [MIT](LICENSE) © Denys Dovhan
+
+The [Home Assistant logo](https://github.com/home-assistant/assets/tree/master/logo) belongs to the Open Home Foundation and is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
