@@ -3,19 +3,12 @@ import { readFileSync, readdirSync, existsSync } from "node:fs";
 
 const read = (path) => JSON.parse(readFileSync(path, "utf8"));
 
-// Keep shared plugin metadata identical while allowing host-specific branding.
+// Keep shared plugin metadata and versions identical while allowing host-specific branding.
 const { $schema, extensions, ...manifest } = read("plugin.json");
 const { displayName, icon, documentationUrl, supportUrl, ...claudeManifest } = read(
   ".claude-plugin/plugin.json",
 );
 assert.deepEqual(claudeManifest, manifest);
-
-// All installable manifests and npm metadata must advertise one version.
-const packageMetadata = read("package.json");
-const lock = read("package-lock.json");
-assert.equal(packageMetadata.version, manifest.version);
-assert.equal(lock.version, manifest.version);
-assert.equal(lock.packages[""].version, manifest.version);
 
 // Both hosts use the same bundled logo and display name.
 const branding = extensions["com.openai"].interface;

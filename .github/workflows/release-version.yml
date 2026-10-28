@@ -41,4 +41,4 @@ jobs:
         with:
           branch: main
           commit_message: "chore: update version to ${{ env.RELEASE_TAG }}"
-          file_pattern: plugin.json .claude-plugin/plugin.json package.json package-lock.json
+          file_pattern: plugin.json .claude-plugin/plugin.json

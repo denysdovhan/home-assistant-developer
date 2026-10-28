@@ -9,7 +9,7 @@ assert.match(
 );
 
 // Read every document before writing, so missing or invalid JSON leaves files intact.
-const paths = ["plugin.json", ".claude-plugin/plugin.json", "package.json", "package-lock.json"];
+const paths = ["plugin.json", ".claude-plugin/plugin.json"];
 const documents = paths.map((path) => JSON.parse(readFileSync(path, "utf8")));
 const current = documents[0].version.split(".").map(BigInt);
 const next = version.split(".").map(BigInt);
@@ -19,10 +19,8 @@ assert.ok(
   "Release version must not go backwards",
 );
 
-// package-lock.json records the root package version in two places.
-documents[3].packages[""].version = version;
 for (const [index, document] of documents.entries()) {
   document.version = version;
   writeFileSync(paths[index], `${JSON.stringify(document, null, 2)}\n`);
 }
-console.log(`Set all package and plugin versions to ${version}`);
+console.log(`Set both plugin versions to ${version}`);

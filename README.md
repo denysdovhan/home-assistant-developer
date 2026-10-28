@@ -113,17 +113,16 @@ See [Claude directory listing fields](https://code.claude.com/docs/en/plugins-re
 
 ## Development
 
-Requires Node.js 24+, uv, pre-commit, and Claude Code.
+Requires Make, Node.js 24+, uv, and Claude Code.
 
 ```sh
-npm ci
-pre-commit install
-npm run format
-npm run validate
-npm run format:check
+make install
+make check
 ```
 
-Pre-commit formats staged text files with the locked oxfmt version. CI checks formatting, validates both skills with the official skills-ref tool, validates the portable plugin against its published schema and the Claude manifests with Claude Code, and checks marketplace paths and shared metadata. Validation needs network access to fetch Python tooling and the portable schema.
+`make install` installs the Git hook and lets pre-commit download the pinned oxfmt version into its own environment. No project npm installation is needed. Each commit runs formatting and both validation scripts. Use `make format` to format all tracked text files and `make validate` to run the skill and plugin validators directly. `make check` runs all pre-commit hooks and fails if formatting changes are needed.
+
+CI runs `make check`: it checks formatting, validates both skills with the official skills-ref tool, validates the portable plugin against its published schema and the Claude manifests with Claude Code, and checks marketplace paths and shared metadata. Installation and validation need network access to fetch tooling and the portable schema.
 
 The root `plugin.json` uses [Agent Plugins 1.0](https://agent-plugins.org/) as recommended by [OpenAI](https://developers.openai.com/plugins/build/plugins). `.agents/plugins/marketplace.json` exposes it to Codex. `.claude-plugin/` supplies the [Claude plugin and marketplace manifests](https://code.claude.com/docs/en/plugin-marketplaces). All manifests share the same root `skills/` directory.
 
@@ -133,9 +132,9 @@ These skills were extracted from [denysdovhan/agents](https://github.com/denysdo
 
 1. Merge pull requests into `main`. **Release Drafter** groups notes into skill improvements, fixes, documentation, and maintenance using PR titles and labels. `feat:` or `feature`/`enhancement`/`minor` means a minor bump; a breaking conventional title or `major`/`breaking` means a major bump. Documentation and other changes default to a patch; `skip-changelog` excludes a PR.
 2. Review the draft in GitHub Releases and choose a stable tag such as `v1.0.2`. For the first release, use a version at least as high as `plugin.json`. Add notes manually for direct commits, which Release Drafter does not include.
-3. Click **Publish release**. **Update release version** uses `git-auto-commit-action` to commit that tag's version to the four JSON metadata files on `main`.
+3. Click **Publish release**. **Update release version** uses `git-auto-commit-action` to commit that tag's version to both plugin manifests on `main`.
 
-The version update covers `plugin.json`, `.claude-plugin/plugin.json`, `package.json`, and both root version fields in `package-lock.json`. It rejects malformed versions and downgrades, and makes no commit if the files already match. Only stable versions (`X.Y.Z`, optionally prefixed with `v`) are supported.
+The version update covers `plugin.json` and `.claude-plugin/plugin.json`. It rejects malformed versions and downgrades, and makes no commit if the files already match. Only stable versions (`X.Y.Z`, optionally prefixed with `v`) are supported.
 
 The metadata commit comes after publication. The release tag and source archives remain unchanged and therefore contain the previous metadata version. The workflow uses `GITHUB_TOKEN`, so `main` must allow bot pushes; its metadata consistency checks run before committing because that push does not trigger other workflows. If the update fails, fix the cause and rerun **Update release version** from Actions.
 

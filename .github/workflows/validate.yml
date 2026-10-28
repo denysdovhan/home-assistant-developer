@@ -25,27 +25,17 @@ jobs:
         uses: actions/setup-node@v7.1.0
         with:
           node-version: "24"
-          cache: npm
 
       - name: Set up uv
         uses: astral-sh/setup-uv@v10.3.2
         with:
           enable-cache: false
 
-      - name: Install dependencies
-        run: npm ci
-
       - name: Install Claude plugin validator
         run: npm install --global @anthropic-ai/claude-code@2.1.150 --registry=https://registry.npmjs.org
 
-      - name: Check formatting
-        run: npm run format:check
-
-      - name: Validate skills and plugin manifests
-        run: npm run validate
-
-      - name: Run pre-commit hooks
-        run: uvx pre-commit==4.3.0 run --all-files
+      - name: Check formatting, skills, and plugin manifests
+        run: make check
 
       - name: Verify checks left files unchanged
         run: git diff --exit-code
