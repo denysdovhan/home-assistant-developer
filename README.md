@@ -97,20 +97,6 @@ Use home-assistant-integration to review this integration against the
 Bronze quality rules. Report findings before changing any files.
 ```
 
-## Plugin appearance
-
-Edit `extensions.com.openai.interface` in `plugin.json` to customize Codex's
-`displayName`, `logo`, `composerIcon`, `brandColor`, and `brandColorDark`.
-Image paths are relative to the plugin root; the bundled logo is
-`assets/home-assistant.svg`. Both colors currently use Home Assistant blue (`#18BCF2`).
-See [OpenAI listing metadata](https://developers.openai.com/plugins/deploy/submission#listing-metadata).
-
-Claude's `.claude-plugin/plugin.json` declares `displayName` and `icon`.
-The icon is used for Anthropic directory listings; Claude Code ignores it at
-runtime and has no documented plugin brand-color field. Merely installing from
-this repository does not guarantee a graphical icon in Claude's install UI.
-See [Claude directory listing fields](https://code.claude.com/docs/en/plugins-reference#directory-listing-fields).
-
 ## Development
 
 Requires Make, Node.js 24+, uv, and Claude Code.
@@ -120,30 +106,22 @@ make install
 make check
 ```
 
-`make install` installs the Git hook and lets pre-commit download the pinned oxfmt version into its own environment. No project npm installation is needed. Each commit runs formatting and both validation scripts. Use `make format` to format all tracked text files and `make validate` to run the skill and plugin validators directly. `make check` runs all pre-commit hooks and fails if formatting changes are needed.
+The root `plugin.json` uses [Agent Plugins 1.0](https://agent-plugins.org/) as recommended by [OpenAI](https://developers.openai.com/plugins/build/plugins). `.agents/plugins/marketplace.json` exposes it to Codex.
 
-CI runs `make check`: it checks formatting, validates both skills with the official skills-ref tool, validates the portable plugin against its published schema and the Claude manifests with Claude Code, and checks marketplace paths and shared metadata. Installation and validation need network access to fetch tooling and the portable schema.
+`.claude-plugin/` supplies the [Claude plugin and marketplace manifests](https://code.claude.com/docs/en/plugin-marketplaces). All manifests share the same root `skills/` directory.
 
-The root `plugin.json` uses [Agent Plugins 1.0](https://agent-plugins.org/) as recommended by [OpenAI](https://developers.openai.com/plugins/build/plugins). `.agents/plugins/marketplace.json` exposes it to Codex. `.claude-plugin/` supplies the [Claude plugin and marketplace manifests](https://code.claude.com/docs/en/plugin-marketplaces). All manifests share the same root `skills/` directory.
+These skills were extracted from [denysdovhan/agents](https://github.com/denysdovhan/agents).
 
-These skills were extracted from [denysdovhan/agents](https://github.com/denysdovhan/agents). Keep instructions, references, icons, and OpenAI skill metadata together when moving a skill.
-
-## Releases
-
-1. Merge pull requests into `main`. **Release Drafter** groups notes into skill improvements, fixes, documentation, and maintenance using PR titles and labels. `feat:` or `feature`/`enhancement`/`minor` means a minor bump; a breaking conventional title or `major`/`breaking` means a major bump. Documentation and other changes default to a patch; `skip-changelog` excludes a PR.
-2. Review the draft in GitHub Releases and choose a stable tag such as `v1.0.2`. For the first release, use a version at least as high as `plugin.json`. Add notes manually for direct commits, which Release Drafter does not include.
-3. Click **Publish release**. **Update release version** uses `git-auto-commit-action` to commit that tag's version to both plugin manifests on `main`.
-
-The version update covers `plugin.json` and `.claude-plugin/plugin.json`. It rejects malformed versions and downgrades, and makes no commit if the files already match. Only stable versions (`X.Y.Z`, optionally prefixed with `v`) are supported.
-
-The metadata commit comes after publication. The release tag and source archives remain unchanged and therefore contain the previous metadata version. The workflow uses `GITHUB_TOKEN`, so `main` must allow bot pushes; its metadata consistency checks run before committing because that push does not trigger other workflows. If the update fails, fix the cause and rerun **Update release version** from Actions.
+See the [contributing guideline](CONTRIBUTING.md) for release instructions.
 
 ## Sponsorship
 
-Your support helps me maintain these skills and my [Home Assistant integrations](https://github.com/denysdovhan/home-assistant-integrations).
+Your generosity will help me maintain and develop more projects like this one.
 
-- [Sponsor on GitHub](https://github.com/sponsors/denysdovhan)
-- [Buy Me a Coffee](https://buymeacoffee.com/denysdovhan)
+- 💖 [Sponsor on GitHub](https://github.com/sponsors/denysdovhan)
+- ☕️ [Buy Me A Coffee](https://buymeacoffee.com/denysdovhan)
+- Bitcoin: `bc1q7lfx6de8jrqt8mcds974l6nrsguhd6u30c6sg8`
+- Ethereum: `0x6aF39C917359897ae6969Ad682C14110afe1a0a1`
 
 ## License
 
