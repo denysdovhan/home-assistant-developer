@@ -4,8 +4,9 @@ Use these compact examples when creating a card, adding a visual editor, or revi
 
 Sources (paths relative to the docs base URL in `frontend-docs.md`):
 
-- `frontend/custom-ui/custom-card.md`
-- `frontend/data.md`
+- `frontend/custom-ui/card/index.md`
+- `frontend/custom-ui/card-editor/index.md`
+- `frontend/reference/hass-object/index.md`
 
 ## Minimal Card Shape
 
@@ -142,7 +143,7 @@ window.customCards.push({
   name: "Example Status Card",
   description: "Display one entity state.",
   preview: false,
-  documentationURL: "https://developers.home-assistant.io/docs/frontend/custom-ui/custom-card",
+  documentationURL: "https://contributors.home-assistant.io/frontend/custom-ui/card/",
   getEntitySuggestion: (hass, entityId) => {
     const stateObj = hass.states[entityId];
     if (!stateObj || entityId.split(".")[0] !== "sensor") {

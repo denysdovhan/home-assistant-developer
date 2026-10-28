@@ -9,13 +9,13 @@ Use this skill for Home Assistant custom integration development. This is separa
 
 ## Start With Current Docs
 
-Fetch the latest markdown from the Home Assistant developers docs repository before coding. All doc paths in this skill and its references are relative to this base URL — prepend it when fetching:
+Fetch current Markdown from Home Assistant Contributors before coding. All upstream doc paths in this skill and its references are relative to this base URL:
 
 ```text
-https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/
+https://contributors.home-assistant.io/
 ```
 
-Use rendered pages on `developers.home-assistant.io` only as secondary reading. Do not copy Home Assistant docs into generated skill or repo files. Fetch only the files relevant to the task.
+Each page has a Markdown version at `<page URL>index.md`. Use `core/llms.txt` to find current integration pages and `marketplace/llms.txt` for custom integration packaging and distribution. Start at `llms.txt` for other areas. Fetch only relevant pages; do not load `llms-full.txt` by default or copy Home Assistant docs into generated skill or repo files. For human-readable links, omit `index.md`.
 
 The reference files in this skill are the routing indexes to the doc paths; do not rely on remembered Home Assistant APIs. Always consult the relevant reference, then fetch the current markdown files it points to, before editing matching files:
 
@@ -57,7 +57,7 @@ Add files such as `config_flow.py`, platform modules, `coordinator.py`, `entity.
 
 Default to Bronze. Higher levels are cumulative and should only be added when the user asks or explicitly accepts the extra scope. Bronze means all Bronze rules apply; Silver includes Bronze; Gold includes Silver and Bronze; Platinum includes all lower levels.
 
-Before finishing ordinary integration work, read `references/quality-rules.md`, confirm the current rule list from `core/integration-quality-scale/_includes/tiers.json`, fetch the latest markdown for each relevant rule, and verify every Bronze rule against the current code. If the user asks for Silver, Gold, or Platinum, make the additional rule set part of the implementation scope before coding.
+Before finishing ordinary integration work, read `references/quality-rules.md`, confirm the current rule list from `core/quality-scale/rules/index.md`, fetch the latest markdown for each relevant rule, and verify every Bronze rule against the current code. If the user asks for Silver, Gold, or Platinum, make the additional rule set part of the implementation scope before coding.
 
 ## Review Checklist
 
@@ -65,6 +65,6 @@ Before finishing:
 
 1. Re-fetch relevant docs and quality rule files.
 2. Verify the requested quality level, defaulting to Bronze.
-3. Run component and platform review checklists relevant to changed files.
+3. Apply `core/development/checklist/index.md` to the changed files.
 4. Confirm config entry setup, unload, runtime data, entity IDs, translations, diagnostics, and tests match the selected scope.
 5. Run local validation scripts from the repo instructions.

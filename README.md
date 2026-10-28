@@ -38,7 +38,7 @@
 
 ## Included skills
 
-Build, review, and debug your projects with guidance based on current [Home Assistant developer documentation](https://developers.home-assistant.io/).
+Build, review, and debug your projects with guidance based on current [Home Assistant contributor documentation](https://contributors.home-assistant.io/).
 
 | Skill                                                                    | Purpose                                                                                   |
 | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |

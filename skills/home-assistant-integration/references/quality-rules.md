@@ -1,8 +1,8 @@
 # Home Assistant Quality Rules Reference
 
-Doc paths below are relative to the docs base URL defined in `SKILL.md` (`https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/`). Each rule's doc lives at `core/integration-quality-scale/rules/<rule>.md` under that base. Fetch the current markdown for a rule before applying it.
+Doc paths below are relative to the docs base URL defined in `SKILL.md` (`https://contributors.home-assistant.io/`). Each rule's doc lives at `core/quality-scale/<rule>/index.md` under that base. Fetch the current markdown for a rule before applying it.
 
-The authoritative, machine-readable rule list per tier is `core/integration-quality-scale/_includes/tiers.json`. Fetch it at the start of any quality review; if it disagrees with the table below, trust `tiers.json`. Do not fetch `core/integration-quality-scale/rules.md` or `checklist.md` as raw markdown — they are JSX shells with no rule content; their rendered pages are for human reading only.
+Fetch `core/quality-scale/rules/index.md` at the start of any quality review. It contains the current rules grouped by tier and the checklist, including subchecks. If it disagrees with the table below, trust the current page. Read `core/quality-scale/tiers/index.md` for tier definitions.
 
 Default to Bronze. Higher levels are cumulative and should only be added when the user asks or explicitly accepts the extra scope.
 

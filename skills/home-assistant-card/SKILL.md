@@ -11,15 +11,15 @@ This is separate from Python integrations, automations, scripts, helpers, and or
 
 ## Start With Current Docs
 
-Fetch current markdown from the Home Assistant developers docs repository before changing card APIs. All doc paths in this skill's references are relative to this base URL — prepend it when fetching:
+Fetch current Markdown from Home Assistant Contributors before changing card APIs. All upstream doc paths in this skill and its references are relative to this base URL:
 
 ```text
-https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/
+https://contributors.home-assistant.io/
 ```
 
-Use rendered pages on `developers.home-assistant.io` only as secondary reading. Fetch only relevant files, and do not copy Home Assistant docs into generated skill or repo files.
+Each page has a Markdown version at `<page URL>index.md`. Use `frontend/llms.txt` to find current frontend pages and `marketplace/llms.txt` for packaging and distribution. Start at `llms.txt` for other areas. Fetch only relevant pages; do not load `llms-full.txt` by default or copy Home Assistant docs into generated skill or repo files. For human-readable links, omit `index.md`.
 
-Use `references/frontend-docs.md` as the docs routing index. The most important source is `frontend/custom-ui/custom-card.md`.
+Use `references/frontend-docs.md` as the docs routing index. Start with `frontend/custom-ui/card/index.md` for card APIs and `frontend/custom-ui/card-editor/index.md` for editors and picker registration.
 
 ## Local Workflow
 

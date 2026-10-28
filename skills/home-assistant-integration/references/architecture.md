@@ -1,58 +1,57 @@
 # Home Assistant Architecture Reference
 
-Use this file before editing generic integration architecture. Doc paths below are relative to the docs base URL defined in `SKILL.md` (`https://raw.githubusercontent.com/home-assistant/developers.home-assistant/master/docs/`) — prepend it and fetch the current markdown before coding.
+Use this file before editing generic integration architecture. Doc paths below are relative to the docs base URL defined in `SKILL.md` (`https://contributors.home-assistant.io/`) — prepend it and fetch the current markdown before coding.
 
 ## Core Architecture
 
-| Topic                              | Doc path                     |
-| ---------------------------------- | ---------------------------- |
-| Core architecture                  | `architecture/core.md`       |
-| Integration/component architecture | `architecture_components.md` |
-| The `hass` object                  | `dev_101_hass.md`            |
-| Events basics                      | `dev_101_events.md`          |
-| Services basics                    | `dev_101_services.md`        |
-| States basics                      | `dev_101_states.md`          |
+| Topic                | Doc path                              |
+| -------------------- | ------------------------------------- |
+| Core architecture    | `architecture/core/index.md`          |
+| Integration concepts | `core/integrations/concepts/index.md` |
+| The `hass` object    | `core/internals/hass/index.md`        |
+| Events basics        | `core/internals/events/index.md`      |
+| Services basics      | `core/integrations/actions/index.md`  |
+| States basics        | `core/internals/states/index.md`      |
 
 ## Integration Structure
 
-| Topic                | Doc path                                 |
-| -------------------- | ---------------------------------------- |
-| File structure       | `creating_integration_file_structure.md` |
-| Manifest             | `creating_integration_manifest.md`       |
-| Brand assets         | `core/integration/brand_images.md`       |
-| Config entries index | `config_entries_index.md`                |
-| Config flow          | `core/integration/config_flow.md`        |
-| Options flow         | `core/integration/options_flow.md`       |
-| YAML configuration   | `core/integration/yaml_configuration.md` |
+| Topic                | Doc path                                    |
+| -------------------- | ------------------------------------------- |
+| File structure       | `core/integrations/file-structure/index.md` |
+| Manifest             | `core/integrations/manifest/index.md`       |
+| Brand assets         | `core/integrations/brands/index.md`         |
+| Config entries index | `core/integrations/config-entries/index.md` |
+| Config flow          | `core/integrations/config-flow/index.md`    |
+| Options flow         | `core/integrations/options-flow/index.md`   |
+| YAML configuration   | `core/integrations/yaml/index.md`           |
 
 For local file-level routing, read `core-integration-files.md` before editing integration files such as `__init__.py`, `manifest.json`, `config_flow.py`, `coordinator.py`, `diagnostics.py`, or `repairs.py`.
 
 ## Runtime Behavior
 
-| Topic                      | Doc path                            |
-| -------------------------- | ----------------------------------- |
-| Fetching data              | `integration_fetching_data.md`      |
-| Setup failures             | `integration_setup_failures.md`     |
-| Firing events              | `integration_events.md`             |
-| Listening for events       | `integration_listen_events.md`      |
-| Automation trigger classes | `automations.md`                    |
-| Networking and discovery   | `network_discovery.md`              |
-| Diagnostics                | `core/integration/diagnostics.md`   |
-| System health              | `core/integration/system_health.md` |
-| Authentication             | `auth_index.md`                     |
+| Topic                           | Doc path                                             |
+| ------------------------------- | ---------------------------------------------------- |
+| Fetching data                   | `core/integrations/fetching-data/index.md`           |
+| Setup failures                  | `core/integrations/setup-failures/index.md`          |
+| Firing and listening for events | `core/integrations/events/index.md`                  |
+| Automation trigger classes      | `core/integrations/triggers-and-conditions/index.md` |
+| Networking and discovery        | `core/integrations/network-discovery/index.md`       |
+| Diagnostics                     | `core/integrations/diagnostics/index.md`             |
+| System health                   | `core/integrations/system-health/index.md`           |
+| Authentication                  | `core/internals/auth/index.md`                       |
 
 ## Project Hygiene
 
-| Topic                 | Doc path                                       |
-| --------------------- | ---------------------------------------------- |
-| Component code review | `creating_component_code_review.md`            |
-| Platform code review  | `creating_platform_code_review.md`             |
-| Test file structure   | `creating_integration_tests_file_structure.md` |
-| Development testing   | `development_testing.md`                       |
-| Typing                | `development_typing.md`                        |
-| Translations          | `translations.md`                              |
-| Internationalization  | `internationalization.md`                      |
-| Documentation         | `documenting.md`                               |
+| Topic                                         | Doc path                                   |
+| --------------------------------------------- | ------------------------------------------ |
+| Component and platform review                 | `core/development/checklist/index.md`      |
+| Test file structure                           | `core/development/tests/index.md`          |
+| Development testing                           | `core/development/testing/index.md`        |
+| Typing                                        | `core/development/typing/index.md`         |
+| Translations                                  | `core/integrations/translations/index.md`  |
+| Internationalization                          | `translate/guides/developers/index.md`     |
+| Documentation                                 | `writing/guides/integration/index.md`      |
+| Custom integration packaging and distribution | `marketplace/guides/integrations/index.md` |
 
 ## Editing Rule
 
